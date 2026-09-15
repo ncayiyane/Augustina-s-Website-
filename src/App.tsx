@@ -19,14 +19,20 @@ import WeddingsGallery from './galleries/WeddingsGallery';
 import GraduationsGallery from './galleries/GraduationsGallery';
 import CelebrationsGallery from './galleries/CelebrationsGallery';
 import MemorialsGallery from './galleries/MemorialsGallery';
+import ImigidiGallery from './galleries/ImigidiGallery';
+import EventsGallery from './galleries/EventsGallery';
+import VideosGallery from './galleries/VideosGallery';
 
 const images = {
   hero: '/pictures/Deco1.jpeg',
   wedding: '/pictures/weddings/Wedding1.jpeg',
   graduation: '/pictures/graduations/Graduation1.jpeg',
-  party: '/pictures/umcibi.jpeg',
+  party: '/pictures/celebrations/Celebration11.jpeg',
   memorial: '/pictures/memorials/Funeral1.jpeg',
   field: '/pictures/weddings/Wedding2.jpeg',
+  imigidi: '/pictures/Imigidi/Umgidi1.jpeg',
+  events: '/pictures/Events/Event1.jpeg',
+  Videos: '/Videos/Video1.mp4',
 };
 
 
@@ -44,8 +50,11 @@ const packages = [
 const occasions = [
   { title: 'Weddings', image: images.wedding, description: 'The quiet glances, loud laughter and every in-between.' },
   { title: 'Graduations', image: images.graduation, description: 'A proud chapter, captured with the joy it deserves.' },
+  { title: 'Imigidi', image: images.imigidi, description: 'Traditional ceremonies, cultural pride and timeless moments.' },
+  { title: 'Events', image: images.events, description: 'Corporate gatherings, conferences and special occasions.' },
   { title: 'Celebrations', image: images.party, description: 'Big energy, beautiful people and the moments you miss.' },
   { title: 'Memorials', image: images.memorial, description: 'A gentle, respectful record of a life well remembered.' },
+  { title: 'Videos', image: images.Videos, description: 'Moving stories captured in motion and emotion.' },
 ];
 
 const testimonials = [
@@ -83,7 +92,7 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [heroParallax, setHeroParallax] = useState(0);
-  const [currentGallery, setCurrentGallery] = useState<'weddings' | 'graduations' | 'celebrations' | 'memorials' | null>(null);
+  const [currentGallery, setCurrentGallery] = useState<'weddings' | 'graduations' | 'celebrations' | 'memorials' | 'imigidi' | 'events' | 'videos' | null>(null);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -104,7 +113,7 @@ function App() {
   const nextTestimonial = () => setActiveTestimonial((p) => (p + 1) % testimonials.length);
   const prevTestimonial = () => setActiveTestimonial((p) => (p - 1 + testimonials.length) % testimonials.length);
 
-  const openGallery = (category: 'weddings' | 'graduations' | 'celebrations' | 'memorials') => {
+  const openGallery = (category: 'weddings' | 'graduations' | 'celebrations' | 'memorials' | 'imigidi' | 'events' | 'videos') => {
     setSavedScrollPosition(window.scrollY);
     setCurrentGallery(category);
   };
@@ -126,6 +135,12 @@ function App() {
         <CelebrationsGallery onBack={closeGallery} />
       ) : currentGallery === 'memorials' ? (
         <MemorialsGallery onBack={closeGallery} />
+      ) : currentGallery === 'imigidi' ? (
+        <ImigidiGallery onBack={closeGallery} />
+      ) : currentGallery === 'events' ? (
+        <EventsGallery onBack={closeGallery} />
+      ) : currentGallery === 'videos' ? (
+        <VideosGallery onBack={closeGallery} />
       ) : (
         <>
           <header className={`topbar ${scrolled ? 'scrolled' : ''}`}>
@@ -194,11 +209,14 @@ function App() {
                   <button 
                     className="card-arrow-btn"
                     onClick={() => {
-                      const categoryMap: Record<string, 'weddings' | 'graduations' | 'celebrations' | 'memorials'> = {
+                      const categoryMap: Record<string, 'weddings' | 'graduations' | 'celebrations' | 'memorials' | 'imigidi' | 'events' | 'videos'> = {
                         'Weddings': 'weddings',
                         'Graduations': 'graduations',
                         'Celebrations': 'celebrations',
                         'Memorials': 'memorials',
+                        'Imigidi': 'imigidi',
+                        'Events': 'events',
+                        'Videos': 'videos',
                       };
                       openGallery(categoryMap[occasion.title]);
                     }}

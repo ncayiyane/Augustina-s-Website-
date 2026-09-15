@@ -1,35 +1,42 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const celebrationsImages = [
-  '/pictures/celebrations/Celebration1.jpeg',
-  '/pictures/celebrations/Celebration2.jpeg',
-  '/pictures/celebrations/Celebration3.jpeg',
-  '/pictures/celebrations/Celebration4.jpeg',
-  '/pictures/celebrations/Celebration5.jpeg',
+const videos = [
+  '/videos/Video1.mp4',
+  '/videos/Video2.mp4',
+  '/videos/Video3.mp4',
+  '/videos/Video4.mp4',
+  '/videos/Video5.mp4',
 ];
 
-interface CelebrationsGalleryProps {
+interface VideosGalleryProps {
   onBack: () => void;
 }
 
-export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps) {
+export default function VideosGallery({ onBack }: VideosGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const hideTimeoutRef = useRef<number | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') nextImage();
-      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextVideo();
+      if (e.key === 'ArrowLeft') prevVideo();
       if (e.key === 'Escape') onBack();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(console.error);
+    }
+  }, [currentIndex]);
 
   const showHeader = () => {
     setHeaderVisible(true);
@@ -54,19 +61,19 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
     };
   }, []);
 
-  const nextImage = () => {
+  const nextVideo = () => {
     setDirection('next');
-    setCurrentIndex((prev) => (prev + 1) % celebrationsImages.length);
+    setCurrentIndex((prev) => (prev + 1) % videos.length);
   };
 
-  const prevImage = () => {
+  const prevVideo = () => {
     setDirection('prev');
-    setCurrentIndex((prev) => (prev - 1 + celebrationsImages.length) % celebrationsImages.length);
+    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   };
 
   return (
     <div 
-      className={`gallery-container celebrations-gallery ${isLoaded ? 'gallery-loaded' : ''}`}
+      className={`gallery-container videos-gallery ${isLoaded ? 'gallery-loaded' : ''}`}
       onClick={handleInteraction}
       onTouchStart={handleInteraction}
     >
@@ -74,7 +81,7 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
         <button className="gallery-back" onClick={onBack}>
           <ArrowLeft size={18} /> Back
         </button>
-        <h1 className="gallery-title">Celebrations</h1>
+        <h1 className="gallery-title">Videos</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">
           <X size={22} />
         </button>
@@ -82,27 +89,29 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
       
       <div className="gallery-main">
         <button 
-          onClick={prevImage} 
+          onClick={prevVideo} 
           className="gallery-nav-btn gallery-nav-left"
-          aria-label="Previous image"
+          aria-label="Previous video"
         >
           <ChevronLeft size={36} />
         </button>
         
         <div className="gallery-image-wrapper">
-          <img 
+          <video 
             key={currentIndex}
-            src={celebrationsImages[currentIndex]} 
-            alt={`Celebration ${currentIndex + 1}`} 
-            className={`gallery-image ${direction ? `slide-${direction}` : ''}`}
+            ref={videoRef}
+            src={videos[currentIndex]} 
+            controls
+            autoPlay
+            className={`gallery-video ${direction ? `slide-${direction}` : ''}`}
             onAnimationEnd={() => setDirection(null)}
           />
         </div>
         
         <button 
-          onClick={nextImage} 
+          onClick={nextVideo} 
           className="gallery-nav-btn gallery-nav-right"
-          aria-label="Next image"
+          aria-label="Next video"
         >
           <ChevronRight size={36} />
         </button>

@@ -1,19 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const celebrationsImages = [
-  '/pictures/celebrations/Celebration1.jpeg',
-  '/pictures/celebrations/Celebration2.jpeg',
-  '/pictures/celebrations/Celebration3.jpeg',
-  '/pictures/celebrations/Celebration4.jpeg',
-  '/pictures/celebrations/Celebration5.jpeg',
+const imigidiImages = [
+  '/pictures/Imigidi/Umgidi1.jpeg',
+  '/pictures/Imigidi/Umgidi2.jpeg',
+  '/pictures/Imigidi/Umgidi3.jpeg',
+  '/pictures/Imigidi/Umgidi4.jpeg',
+  '/pictures/Imigidi/Umgidi5.jpeg',
+  '/pictures/Imigidi/Umgidi6.jpeg'
 ];
 
-interface CelebrationsGalleryProps {
+interface ImigidiGalleryProps {
   onBack: () => void;
 }
 
-export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps) {
+export default function ImigidiGallery({ onBack }: ImigidiGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -56,17 +57,17 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
 
   const nextImage = () => {
     setDirection('next');
-    setCurrentIndex((prev) => (prev + 1) % celebrationsImages.length);
+    setCurrentIndex((prev) => (prev + 1) % imigidiImages.length);
   };
 
   const prevImage = () => {
     setDirection('prev');
-    setCurrentIndex((prev) => (prev - 1 + celebrationsImages.length) % celebrationsImages.length);
+    setCurrentIndex((prev) => (prev - 1 + imigidiImages.length) % imigidiImages.length);
   };
 
   return (
     <div 
-      className={`gallery-container celebrations-gallery ${isLoaded ? 'gallery-loaded' : ''}`}
+      className={`gallery-container imigidi-gallery ${isLoaded ? 'gallery-loaded' : ''}`}
       onClick={handleInteraction}
       onTouchStart={handleInteraction}
     >
@@ -74,7 +75,7 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
         <button className="gallery-back" onClick={onBack}>
           <ArrowLeft size={18} /> Back
         </button>
-        <h1 className="gallery-title">Celebrations</h1>
+        <h1 className="gallery-title">Imigidi</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">
           <X size={22} />
         </button>
@@ -92,8 +93,8 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
         <div className="gallery-image-wrapper">
           <img 
             key={currentIndex}
-            src={celebrationsImages[currentIndex]} 
-            alt={`Celebration ${currentIndex + 1}`} 
+            src={imigidiImages[currentIndex]} 
+            alt={`Imigidi ${currentIndex + 1}`} 
             className={`gallery-image ${direction ? `slide-${direction}` : ''}`}
             onAnimationEnd={() => setDirection(null)}
           />
