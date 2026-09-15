@@ -96,7 +96,7 @@ export default function WeddingsGallery({ onBack }: WeddingsGalleryProps) {
           </button>
         </div>
         
-        <div className="gallery-main" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+        <div className="gallery-main wedding-type-selection">
           <button 
             className="wedding-type-card"
             onClick={() => setWeddingType('traditional')}
