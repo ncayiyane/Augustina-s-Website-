@@ -47,14 +47,14 @@ const packages = [
   { name: 'Premium Full Day', price: 'R13 000', detail: '8–9 hours · canvas + photobook', note: 'The complete Augustine Pictures experience.' },
 ];
 
-const occasions = [
+const occasions: Array<{ title: string; image: string; description: string; isVideo?: boolean }> = [
   { title: 'Weddings', image: images.wedding, description: 'The quiet glances, loud laughter and every in-between.' },
   { title: 'Graduations', image: images.graduation, description: 'A proud chapter, captured with the joy it deserves.' },
   { title: 'Imigidi', image: images.imigidi, description: 'Traditional ceremonies, cultural pride and timeless moments.' },
   { title: 'Events', image: images.events, description: 'Corporate gatherings, conferences and special occasions.' },
   { title: 'Celebrations', image: images.party, description: 'Big energy, beautiful people and the moments you miss.' },
   { title: 'Memorials', image: images.memorial, description: 'A gentle, respectful record of a life well remembered.' },
-  { title: 'Videos', image: images.Videos, description: 'Moving stories captured in motion and emotion.' },
+  { title: 'Videos', image: images.Videos, description: 'Moving stories captured in motion and emotion.', isVideo: true },
 ];
 
 const testimonials = [
@@ -200,13 +200,17 @@ function App() {
                 className={`occasion-card card-${index + 1}`}
                 delay={index * 120}
               >
-                <img src={occasion.image} alt={occasion.title} />
+                {occasion.isVideo ? (
+                  <video src={occasion.image} muted loop autoPlay playsInline className="occasion-video" />
+                ) : (
+                  <img src={occasion.image} alt={occasion.title} />
+                )}
                 <div className="card-shade" />
                 <div className="card-copy">
                   <span>0{index + 1}</span>
                   <h3>{occasion.title}</h3>
                   <p>{occasion.description}</p>
-                  <button 
+                  <button
                     className="card-arrow-btn"
                     onClick={() => {
                       const categoryMap: Record<string, 'weddings' | 'graduations' | 'celebrations' | 'memorials' | 'imigidi' | 'events' | 'videos'> = {

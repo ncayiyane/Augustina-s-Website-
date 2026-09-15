@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const videos = [
-  '/videos/Video1.mp4',
-  '/videos/Video2.mp4',
-  '/videos/Video3.mp4',
-  '/videos/Video4.mp4',
-  '/videos/Video5.mp4',
+  '/Videos/Video1.mp4',
+  '/Videos/Video2.mp4',
+  '/Videos/Video3.mp4',
+  '/Videos/Video4.mp4',
 ];
 
 interface VideosGalleryProps {
