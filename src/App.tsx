@@ -316,7 +316,7 @@ function App() {
         <div className="footer-social">
           <a href="https://www.instagram.com" aria-label="Instagram"><Instagram size={18} /></a>
           <a href="https://wa.me/27812802554" aria-label="WhatsApp"><MessageCircle size={18} /></a>
-          <span>© 2024 Augustine Pictures</span>
+          <span>© 2026 Augustine Pictures</span>
         </div>
       </footer>
         </>
