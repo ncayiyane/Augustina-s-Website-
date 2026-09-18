@@ -7,6 +7,19 @@ const celebrationsImages = [
   '/pictures/celebrations/Celebration3.jpeg',
   '/pictures/celebrations/Celebration4.jpeg',
   '/pictures/celebrations/Celebration5.jpeg',
+  '/pictures/celebrations/Celebration6.jpeg',
+  '/pictures/celebrations/Celebration7.jpeg',
+  '/pictures/celebrations/Celebration8.jpeg',
+  '/pictures/celebrations/Celebration9.jpeg',
+  '/pictures/celebrations/Celebration10.jpeg',
+  '/pictures/celebrations/Celebration11.jpeg',
+  '/pictures/celebrations/Celebration12.jpeg',
+  '/pictures/celebrations/Celebration13.jpeg',
+  '/pictures/celebrations/Celebration14.jpeg',
+  '/pictures/celebrations/Celebration15.jpeg',
+  '/pictures/celebrations/Celebration16.jpeg',
+  '/pictures/celebrations/Celebration17.jpeg',
+  '/pictures/celebrations/Celebration18.jpeg',
 ];
 
 interface CelebrationsGalleryProps {
@@ -71,8 +84,8 @@ export default function CelebrationsGallery({ onBack }: CelebrationsGalleryProps
       onTouchStart={handleInteraction}
     >
       <div className={`gallery-header ${!headerVisible ? 'hidden' : ''}`}>
-        <button className="gallery-back" onClick={onBack}>
-          <ArrowLeft size={18} /> Back
+        <button className="gallery-back" onClick={onBack} aria-label="Back">
+          <ArrowLeft size={18} />
         </button>
         <h1 className="gallery-title">Celebrations</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">

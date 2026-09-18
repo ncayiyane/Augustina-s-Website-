@@ -77,8 +77,8 @@ export default function VideosGallery({ onBack }: VideosGalleryProps) {
       onTouchStart={handleInteraction}
     >
       <div className={`gallery-header ${!headerVisible ? 'hidden' : ''}`}>
-        <button className="gallery-back" onClick={onBack}>
-          <ArrowLeft size={18} /> Back
+        <button className="gallery-back" onClick={onBack} aria-label="Back">
+          <ArrowLeft size={18} />
         </button>
         <h1 className="gallery-title">Videos</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">

@@ -25,11 +25,11 @@ import VideosGallery from './galleries/VideosGallery';
 
 const images = {
   hero: '/pictures/Deco1.jpeg',
-  wedding: '/pictures/weddings/Wedding1.jpeg',
+  wedding: '/pictures/weddings/Traditional Wedding/Traditional_Wedding_15.jpeg',
   graduation: '/pictures/graduations/Graduation1.jpeg',
   party: '/pictures/celebrations/Celebration11.jpeg',
   memorial: '/pictures/memorials/Funeral1.jpeg',
-  field: '/pictures/weddings/Wedding2.jpeg',
+  field: '/pictures/weddings/White%20Wedding/White_Wedding_2.jpeg',
   imigidi: '/pictures/Imigidi/Umgidi1.jpeg',
   events: '/pictures/Events/Event1.jpeg',
   Videos: '/Videos/Video1.mp4',

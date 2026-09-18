@@ -2,21 +2,46 @@ import { useState, useEffect, useRef } from 'react';
 import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const traditionalWeddingsImages = [
-  '/pictures/weddings/Wedding4.jpeg',
-  '/pictures/weddings/Wedding5.jpeg',
-  '/pictures/weddings/Wedding6.jpeg',
-  '/pictures/weddings/Wedding7.jpeg',
-  '/pictures/weddings/Wedding8.jpeg',
-  '/pictures/weddings/Wedding9.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_7.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_1.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_2.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_3.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_4.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_5.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_6.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_8.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_9.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_10.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_11.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_12.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_13.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_14.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_15.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_16.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_17.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_18.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_19.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_20.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_21.jpeg',
+  '/pictures/weddings/Traditional%20Wedding/Traditional_Wedding_22.jpeg',
+
 ];
 
 const whiteWeddingsImages = [
-  '/pictures/weddings/Wedding1.jpeg',
-  '/pictures/weddings/Wedding2.jpeg',
-  '/pictures/weddings/Wedding3.jpeg',
-  '/pictures/weddings/Wedding10.jpeg',
-  '/pictures/weddings/Wedding11.jpeg',
-  '/pictures/weddings/Wedding12.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_13.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_1.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_2.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_3.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_4.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_5.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_6.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_7.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_8.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_9.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_10.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_11.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_12.jpeg',
+  '/pictures/weddings/White%20Wedding/White_Wedding_14.jpeg',
 ];
 
 interface WeddingsGalleryProps {
@@ -30,6 +55,7 @@ export default function WeddingsGallery({ onBack }: WeddingsGalleryProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const hideTimeoutRef = useRef<number | null>(null);
+  const touchStartX = useRef<number>(0);
 
   const currentImages = weddingType === 'traditional' ? traditionalWeddingsImages : whiteWeddingsImages;
 
@@ -64,6 +90,23 @@ export default function WeddingsGallery({ onBack }: WeddingsGalleryProps) {
     showHeader();
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+  };
+
   useEffect(() => {
     showHeader();
     return () => {
@@ -87,8 +130,8 @@ export default function WeddingsGallery({ onBack }: WeddingsGalleryProps) {
     return (
       <div className={`gallery-container weddings-gallery ${isLoaded ? 'gallery-loaded' : ''}`}>
         <div className={`gallery-header ${!headerVisible ? 'hidden' : ''}`}>
-          <button className="gallery-back" onClick={onBack}>
-            <ArrowLeft size={18} /> Back
+          <button className="gallery-back" onClick={onBack} aria-label="Back">
+            <ArrowLeft size={18} />
           </button>
           <h1 className="gallery-title">Weddings</h1>
           <button className="gallery-close" onClick={onBack} aria-label="Close gallery">
@@ -132,8 +175,8 @@ export default function WeddingsGallery({ onBack }: WeddingsGalleryProps) {
       onTouchStart={handleInteraction}
     >
       <div className={`gallery-header ${!headerVisible ? 'hidden' : ''}`}>
-        <button className="gallery-back" onClick={() => setWeddingType(null)}>
-          <ArrowLeft size={18} /> Back
+        <button className="gallery-back" onClick={() => setWeddingType(null)} aria-label="Back">
+          <ArrowLeft size={18} />
         </button>
         <h1 className="gallery-title">{weddingType === 'traditional' ? 'Traditional Wedding' : 'White Wedding'}</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">
@@ -142,26 +185,30 @@ export default function WeddingsGallery({ onBack }: WeddingsGalleryProps) {
       </div>
       
       <div className="gallery-main">
-        <button 
-          onClick={prevImage} 
+        <button
+          onClick={prevImage}
           className="gallery-nav-btn gallery-nav-left"
           aria-label="Previous image"
         >
           <ChevronLeft size={36} />
         </button>
-        
-        <div className="gallery-image-wrapper">
-          <img 
+
+        <div
+          className="gallery-image-wrapper"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <img
             key={currentIndex}
-            src={currentImages[currentIndex]} 
-            alt={`${weddingType === 'traditional' ? 'Traditional' : 'White'} Wedding ${currentIndex + 1}`} 
+            src={currentImages[currentIndex]}
+            alt={`${weddingType === 'traditional' ? 'Traditional' : 'White'} Wedding ${currentIndex + 1}`}
             className={`gallery-image ${direction ? `slide-${direction}` : ''}`}
             onAnimationEnd={() => setDirection(null)}
           />
         </div>
-        
-        <button 
-          onClick={nextImage} 
+
+        <button
+          onClick={nextImage}
           className="gallery-nav-btn gallery-nav-right"
           aria-label="Next image"
         >

@@ -3,11 +3,35 @@ import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const imigidiImages = [
   '/pictures/Imigidi/Umgidi1.jpeg',
+  '/pictures/Imigidi/Umgidi.jpeg',
   '/pictures/Imigidi/Umgidi2.jpeg',
   '/pictures/Imigidi/Umgidi3.jpeg',
   '/pictures/Imigidi/Umgidi4.jpeg',
   '/pictures/Imigidi/Umgidi5.jpeg',
-  '/pictures/Imigidi/Umgidi6.jpeg'
+  '/pictures/Imigidi/Umgidi6.jpeg',
+  '/pictures/Imigidi/Umgidi7.jpeg',
+  '/pictures/Imigidi/Umgidi8.jpeg',
+  '/pictures/Imigidi/Umgidi9.jpeg',
+  '/pictures/Imigidi/Umgidi10.jpeg',
+  '/pictures/Imigidi/Umgidi11.jpeg',
+  '/pictures/Imigidi/Umgidi12.jpeg',
+  '/pictures/Imigidi/Umgidi13.jpeg',
+  '/pictures/Imigidi/Umgidi14.jpeg',
+  '/pictures/Imigidi/Umgidi15.jpeg',
+  '/pictures/Imigidi/Umgidi16.jpeg',
+  '/pictures/Imigidi/Umgidi17.jpeg',
+  '/pictures/Imigidi/Umgidi18.jpeg',
+  '/pictures/Imigidi/Umgidi19.jpeg',
+  '/pictures/Imigidi/Umgidi20.jpeg',
+  '/pictures/Imigidi/Umgidi21.jpeg',
+  '/pictures/Imigidi/Umgidi22.jpeg',
+  '/pictures/Imigidi/Umgidi23.jpeg',
+  '/pictures/Imigidi/Umgidi24.jpeg',
+  '/pictures/Imigidi/Umgidi25.jpeg',
+  '/pictures/Imigidi/Umgidi26.jpeg',
+  '/pictures/Imigidi/Umgidi27.jpeg',
+  '/pictures/Imigidi/Umgidi28.jpeg',
+  '/pictures/Imigidi/Umgidi29.jpeg',
 ];
 
 interface ImigidiGalleryProps {
@@ -72,8 +96,8 @@ export default function ImigidiGallery({ onBack }: ImigidiGalleryProps) {
       onTouchStart={handleInteraction}
     >
       <div className={`gallery-header ${!headerVisible ? 'hidden' : ''}`}>
-        <button className="gallery-back" onClick={onBack}>
-          <ArrowLeft size={18} /> Back
+        <button className="gallery-back" onClick={onBack} aria-label="Back">
+          <ArrowLeft size={18} />
         </button>
         <h1 className="gallery-title">Imigidi</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">

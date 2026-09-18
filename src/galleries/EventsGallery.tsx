@@ -3,10 +3,21 @@ import { X, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const eventsImages = [
   '/pictures/Events/Event1.jpeg',
+  '/pictures/Events/Event0.jpeg',
   '/pictures/Events/Event2.jpeg',
   '/pictures/Events/Event3.jpeg',
   '/pictures/Events/Event4.jpeg',
+  '/pictures/Events/Events5.jpeg',
   '/pictures/Events/Event6.jpeg',
+  '/pictures/Events/Event7.jpeg',
+  '/pictures/Events/Event8.jpeg',
+  '/pictures/Events/Event9.jpeg',
+  '/pictures/Events/Event10.jpeg',
+  '/pictures/Events/Event11.jpeg',
+  '/pictures/Events/Event12.jpeg',
+  '/pictures/Events/Event13.jpeg',
+  '/pictures/Events/Event14.jpeg',
+  '/pictures/Events/Event15.jpeg',
 ];
 
 interface EventsGalleryProps {
@@ -71,8 +82,8 @@ export default function EventsGallery({ onBack }: EventsGalleryProps) {
       onTouchStart={handleInteraction}
     >
       <div className={`gallery-header ${!headerVisible ? 'hidden' : ''}`}>
-        <button className="gallery-back" onClick={onBack}>
-          <ArrowLeft size={18} /> Back
+        <button className="gallery-back" onClick={onBack} aria-label="Back">
+          <ArrowLeft size={18} />
         </button>
         <h1 className="gallery-title">Events</h1>
         <button className="gallery-close" onClick={onBack} aria-label="Close gallery">
