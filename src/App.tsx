@@ -10,7 +10,6 @@ import {
   Menu,
   MessageCircle,
   Phone,
-  Sparkles,
   Star,
   X,
 } from 'lucide-react';
@@ -163,7 +162,7 @@ function App() {
           <div className="hero-image" style={{ backgroundImage: `url(${images.hero})`, transform: `translateY(${heroParallax}px) scale(1.1)` }} />
           <div className="hero-overlay" />
           <div className="hero-copy">
-            <p className="eyebrow light reveal-hero" style={{ '--delay': '0ms' } as React.CSSProperties}><Sparkles size={14} /> For the moments that matter</p>
+            <p className="eyebrow light reveal-hero" style={{ '--delay': '0ms' } as React.CSSProperties}>For the moments that matter</p>
             <h1 className="reveal-hero" style={{ '--delay': '120ms' } as React.CSSProperties}>Stories worth<br /><i>remembering.</i></h1>
             <p className="hero-text reveal-hero" style={{ '--delay': '260ms' } as React.CSSProperties}>We turn your real, remarkable moments into photographs you’ll feel for years to come.</p>
             <div className="hero-actions reveal-hero" style={{ '--delay': '400ms' } as React.CSSProperties}>

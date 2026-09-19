@@ -29,7 +29,7 @@ const traditionalWeddingsImages = [
 
 const whiteWeddingsImages = [
   '/pictures/weddings/White%20Wedding/White_Wedding_13.jpeg',
-  '/pictures/weddings/White%20Wedding/White_Wedding_1.jpeg',
+  // '/pictures/weddings/White%20Wedding/White_Wedding_1.jpeg',
   '/pictures/weddings/White%20Wedding/White_Wedding_2.jpeg',
   '/pictures/weddings/White%20Wedding/White_Wedding_3.jpeg',
   '/pictures/weddings/White%20Wedding/White_Wedding_4.jpeg',
