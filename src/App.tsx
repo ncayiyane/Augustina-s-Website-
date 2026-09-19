@@ -3,6 +3,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Camera,
+  Facebook,
   Heart,
   Instagram,
   Mail,
@@ -314,7 +315,8 @@ function App() {
         <div className="brand footer-brand"><span className="brand-mark">A</span><span><strong>Augustine</strong><em>Pictures</em></span></div>
         <p>Photo · Video · Memories</p>
         <div className="footer-social">
-          <a href="https://www.instagram.com" aria-label="Instagram"><Instagram size={18} /></a>
+          <a href="https://www.instagram.com/augustinepictures/?hl=en" aria-label="Instagram"><Instagram size={18} /></a>
+          <a href="https://www.facebook.com/anearstupdates" aria-label="Facebook"><Facebook size={18} /></a>
           <a href="https://wa.me/27812802554" aria-label="WhatsApp"><MessageCircle size={18} /></a>
           <span>© 2026 Augustine Pictures</span>
         </div>
