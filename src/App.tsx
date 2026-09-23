@@ -303,7 +303,6 @@ function App() {
             <button className="button gold" onClick={() => window.location.href = 'mailto:hello@augustinepictures.co.za'}>Start a conversation <ArrowRight size={17} /></button>
             <div className="direct">
               <a href="tel:0631709924"><Phone size={16} /> 063 170 9924</a>
-              <a href="mailto:hello@augustinepictures.co.za"><Mail size={16} /> hello@augustinepictures.co.za</a>
               <a href="https://wa.me/27812802554"><MessageCircle size={16} /> WhatsApp us</a>
             </div>
           </div></Reveal>
