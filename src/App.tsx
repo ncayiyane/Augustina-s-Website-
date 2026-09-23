@@ -302,7 +302,7 @@ function App() {
             <p>Tell us what you’re celebrating, and we’ll take care of the rest.</p>
             <button className="button gold" onClick={() => window.location.href = 'mailto:hello@augustinepictures.co.za'}>Start a conversation <ArrowRight size={17} /></button>
             <div className="direct">
-              <a href="tel:0631709924"><Phone size={16} /> 063 170 9924</a>
+              <a href="tel:0631709924"><Phone size={16} /> 063 927 9987</a>
               <a href="https://wa.me/27812802554"><MessageCircle size={16} /> WhatsApp us</a>
             </div>
           </div></Reveal>
